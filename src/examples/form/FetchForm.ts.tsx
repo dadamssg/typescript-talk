@@ -32,6 +32,7 @@ export default function PersonForm({ personId }: PersonFormProps) {
     enabled: Boolean(personId),
     queryKey: ["person", personId],
     queryFn: () => getPerson(personId),
+    // person is inferred to be Person from the result of the queryFn
     onSuccess: (person) => {
       // update the forms initial values with the person data
       form.setInitialValues(person);
