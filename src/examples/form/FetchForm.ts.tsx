@@ -3,18 +3,18 @@ import { useMutation, useQuery } from "react-query";
 import axios from "axios";
 import { useValues } from "../../lib";
 
-function getPerson(personId: string) {
+type Person = {
+  favoriteNumber?: number;
+  firstName: string;
+  lastName: string;
+};
+
+function getPerson(personId: string): Promise<Person> {
   return axios.get(`/person/${personId}`).then((res) => res.data.person);
 }
 
 type PersonFormProps = {
   personId: string;
-};
-
-type Person = {
-  favoriteNumber?: number;
-  firstName: string;
-  lastName: string;
 };
 
 const initialState: Person = {
