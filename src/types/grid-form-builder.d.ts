@@ -9,6 +9,7 @@ declare module "grid-form-builder" {
   };
 
   export type InputFieldConfig = BaseFieldConfig & {
+    // notice this is a literal string of "input" type, not `string`.  typescript will use these to distinguish types
     type: "input";
   };
 
