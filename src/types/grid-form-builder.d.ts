@@ -1,3 +1,6 @@
+import * as React from "react";
+import type { Map } from "immutable";
+
 declare module "grid-form-builder" {
   export type BaseFieldConfig = {
     name: string;
@@ -52,11 +55,21 @@ declare module "grid-form-builder" {
     layout: Array<FieldLayoutItem>;
   };
 
-  export type FormBuilderProps = {
-    formSchema: FormSchema;
+  export type HandleChangeEvent = {
+    target: {
+      name: string;
+      value: string;
+    };
   };
 
-  export function FormBuilder({
-    formSchema,
-  }: FormBuilderProps): React.ReactElement;
+  export type FormBuilderProps = {
+    formSchema: FormSchema;
+    formValues?: Map<string, unknown>;
+    handleOnChange?: (event: HandleChangeEvent) => void;
+    onClick?: (config: FieldConfig) => void;
+    draggable?: boolean;
+    inline?: boolean;
+  };
+
+  export function FormBuilder(props: FormBuilderProps): React.ReactNode;
 }
